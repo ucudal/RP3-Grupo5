@@ -1,9 +1,8 @@
-using System.Collections.Generic;
 namespace RoleplayGame
 {
-    public class Knight: NoMagicChar
+    public class DarkKnight: Enemigo
     {
-        public Knight(string name, int _vp): base(name)
+        public DarkKnight(string name, int vptogive): base(name, vptogive)
         {        
             this.AddItem(new Sword());
             this.AddItem(new Armor());

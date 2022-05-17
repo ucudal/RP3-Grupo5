@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 namespace RoleplayGame
 {
-    public class Archer: NoMagicChar
+    public class BlackArcher: Enemigo
     {
 
-        public Archer(string name, int vp):base(name)
+        public BlackArcher(string name, int vptogive):base(name, vptogive)
         {
             this.AddItem(new Bow());
             this.AddItem(new Helmet());
