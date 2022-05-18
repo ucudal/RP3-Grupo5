@@ -1,9 +1,11 @@
 using System.Collections.Generic;
 namespace RoleplayGame
 {
-    public class Archer: ICharacter
+    public class Archer: ICharacter, IHeroe
     {
         private int health = 100;
+
+        private int vp = 0;
 
         private List<IItem> items = new List<IItem>();
 
@@ -61,6 +63,14 @@ namespace RoleplayGame
             }
         }
 
+        public int VP
+        {
+            get 
+            {
+                return this.vp;
+            }
+        }
+
         public void ReceiveAttack(int power)
         {
             if (this.DefenseValue < power)
@@ -82,6 +92,11 @@ namespace RoleplayGame
         public void RemoveItem(IItem item)
         {
             this.items.Remove(item);
+        }
+
+        public void GetVP(int vpGained)
+        {
+            this.vp = this.vp + vpGained; 
         }
     }
 }
