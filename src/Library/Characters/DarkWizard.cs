@@ -1,20 +1,24 @@
 using System.Collections.Generic;
+using System;
 namespace RoleplayGame
 {
-    public class Dwarf: ICharacter, IHeroe
+    public class DarkWizard: IMagicCharacter, IEnemigo
     {
         private int health = 100;
 
-        private int vp = 0;
+        private Random random;
+
+        private int vpToGive;
 
         private List<IItem> items = new List<IItem>();
 
-        public Dwarf(string name)
+        private List<IMagicalItem> magicalItems = new List<IMagicalItem>();
+
+        public DarkWizard(string name)
         {
             this.Name = name;
             
-            this.AddItem(new Axe());
-            this.AddItem(new Helmet());
+            this.AddItem(new Staff());
         }
 
         public string Name { get; set; }
@@ -29,6 +33,13 @@ namespace RoleplayGame
                     if (item is IAttackItem)
                     {
                         value += (item as IAttackItem).AttackValue;
+                    }
+                }
+                foreach (IMagicalItem item in this.magicalItems)
+                {
+                    if (item is IMagicalAttackItem)
+                    {
+                        value += (item as IMagicalAttackItem).AttackValue;
                     }
                 }
                 return value;
@@ -47,6 +58,13 @@ namespace RoleplayGame
                         value += (item as IDefenseItem).DefenseValue;
                     }
                 }
+                foreach (IMagicalItem item in this.magicalItems)
+                {
+                    if (item is IMagicalDefenseItem)
+                    {
+                        value += (item as IMagicalDefenseItem).DefenseValue;
+                    }
+                }
                 return value;
             }
         }
@@ -63,11 +81,15 @@ namespace RoleplayGame
             }
         }
 
-        public int VP
+        public int VpToGive
         {
             get 
             {
-                return this.vp;
+                return this.vpToGive;
+            }
+            private set 
+            {
+                this.vpToGive = random.Next(0, 100);
             }
         }
 
@@ -94,9 +116,14 @@ namespace RoleplayGame
             this.items.Remove(item);
         }
 
-        public void GetVP(int vpGained)
+        public void AddItem(IMagicalItem item)
         {
-            this.vp = this.vp + vpGained; 
+            this.magicalItems.Add(item);
+        }
+
+        public void RemoveItem(IMagicalItem item)
+        {
+            this.magicalItems.Remove(item);
         }
     }
 }

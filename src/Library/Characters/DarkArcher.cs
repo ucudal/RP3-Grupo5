@@ -1,19 +1,22 @@
 using System.Collections.Generic;
+using System;
 namespace RoleplayGame
 {
-    public class Dwarf: ICharacter, IHeroe
+    public class DarkArcher: ICharacter, IEnemigo
     {
         private int health = 100;
 
-        private int vp = 0;
+        private Random random;
+
+        private int vpToGive;
 
         private List<IItem> items = new List<IItem>();
 
-        public Dwarf(string name)
+        public DarkArcher(string name)
         {
             this.Name = name;
             
-            this.AddItem(new Axe());
+            this.AddItem(new Bow());
             this.AddItem(new Helmet());
         }
 
@@ -63,11 +66,15 @@ namespace RoleplayGame
             }
         }
 
-        public int VP
+        public int VpToGive
         {
             get 
             {
-                return this.vp;
+                return this.vpToGive;
+            }
+            private set 
+            {
+                this.vpToGive = random.Next(0, 100);
             }
         }
 
@@ -92,11 +99,6 @@ namespace RoleplayGame
         public void RemoveItem(IItem item)
         {
             this.items.Remove(item);
-        }
-
-        public void GetVP(int vpGained)
-        {
-            this.vp = this.vp + vpGained; 
         }
     }
 }
