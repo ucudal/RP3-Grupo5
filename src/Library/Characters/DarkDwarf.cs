@@ -5,10 +5,7 @@ namespace RoleplayGame
     public class DarkDwarf: ICharacter, IEnemigo
     {
         private int health = 100;
-
-        private Random random;
-
-        private int vpToGive;
+        private int vpToGive=5;
 
         private List<IItem> items = new List<IItem>();
 
@@ -71,10 +68,6 @@ namespace RoleplayGame
             get 
             {
                 return this.vpToGive;
-            }
-            private set 
-            {
-                this.vpToGive = random.Next(0, 100);
             }
         }
 
