@@ -1,14 +1,14 @@
 using System.Collections.Generic;
+using System;
 namespace RoleplayGame
 {
-    public class Dwarf: NoMagicCharacter
+    public class Orco: Enemigo
     {
-
-        public Dwarf(string name) : base (name)
+        public Orco (string name) : base (name)
         {
             this.Name = name;
             this.AddItem(new Axe());
-            this.AddItem(new Helmet());
+            this.AddItem(new Sword());
         }
     }
 }

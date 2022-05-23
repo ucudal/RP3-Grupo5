@@ -1,4 +1,4 @@
-namespace RoleplayGame
+/*namespace RoleplayGame
 {
     public interface ICharacter
     {
@@ -18,4 +18,4 @@ namespace RoleplayGame
 
         void ReceiveAttack(int power);
     }
-}
+}*/

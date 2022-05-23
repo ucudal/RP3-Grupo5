@@ -2,8 +2,9 @@ namespace RoleplayGame
 {
     public interface IHeroe
     {
-        int VP { get; }
-
-        public void GetVP(int vpGained);
+        public int VP { get; }
+        public int AttackValue{get;}
+         public int DefenseValue{get;}
+         public void ReceiveAttack(int power);
     }
 }
